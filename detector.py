@@ -39,6 +39,7 @@ class detector:
                 if landmarks:
                     if self.type == "Pushups":
                     # Pushup detection done
+                            mark = []
                             if landmarks[12].visibility > landmarks[11].visibility:
                                 mark = [12, 30]
                             else:
