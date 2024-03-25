@@ -16,7 +16,7 @@ class VideoRecorderApp:
         self.total_pushups = 0
         self.total_squats = 0
         self.total_situps = 0
-        self.money = 0
+        self.money = 5
         self.music_enabled = False
         self.inventory = []
         self.shop_items = ["small trophy", "5", "decent size trophy", "20", "biggg trophy", "50", "biggest.", "100"]
@@ -54,7 +54,7 @@ class VideoRecorderApp:
         self.counter_label = tk.Label(self.root, text="Count: 0", font=("Spotify", 16), bg="#191414", fg="white")
         self.counter_label.pack()
 
-        self.money_counter_label = tk.Label(self.root, text="Money $DUCK: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        self.money_counter_label = tk.Label(self.root, text="Money $DUCK: 5", font=("Spotify", 16), bg="#191414", fg="white")
         self.money_counter_label.pack()
 
         
@@ -200,24 +200,23 @@ class VideoRecorderApp:
         shop_text.config(text= ntext)
 
         # Create a modal dialog to wait for input
-        def get_input():
+        def get_input(a):
             # After input received
             input_text = entry_field.get()
             item = int(input_text) * 2
-            if(self.money >= self.shop_items[item + 1]):
-                self.money -= self.shop_items[item + 1]
+            if(self.money >= int(self.shop_items[item + 1])):
+                self.money -= int(self.shop_items[item + 1])
                 self.inventory.append(self.shop_items[item])
             self.update_counters()
             ntext = ""
             for i in self.inventory:
                 ntext +=   i + "\n"
             inventory_text.config(text=ntext)
-            time.sleep(3)
         entry_field.bind("<Return>", get_input)
 
 
         
-        root.destroy()
+        root.mainloop()
         
 
 # Define custom style for rounded buttons
