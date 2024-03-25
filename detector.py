@@ -42,15 +42,14 @@ class detector:
                         push_compare1 = (landmarks[30].y / landmarks[12].y)
                         push_compare2 = (landmarks[29].y / landmarks[11].y)
                         if ((push_compare1 / push_compare2) >= 0.99) & ((push_compare1 / push_compare2) <= 1.01):
-
-                            resultPose = "Pushup"
+                            resultPose = "Pushups"
 
                     # if landmarks[11].y == landmarks[30].y and landmarks[12].y == landmarks[29].y:
                     #     cv2.putText(image, "HELLO WORLD", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
 
             # Draw the pose annotation on the image.
             self.image.flags.writeable = True
-            self.image = cv2.cvtColor(self.image, cv2.COLOR_RGB2BGR)
+            #self.image = cv2.cvtColor(self.image, cv2.COLOR_RGB2BGR)
             mp_drawing.draw_landmarks(
                 self.image,
                 results.pose_landmarks,
