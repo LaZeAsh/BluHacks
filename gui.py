@@ -59,14 +59,15 @@ class VideoRecorderApp:
         self.update_video()
 
     def update_video(self):
-        ret, frame = self.video_capture.read()
-        if ret and not self.recording:
-            # Flip the frame horizontally
-            frame = cv2.flip(frame, 1)
-            self.frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            self.photo = ImageTk.PhotoImage(image=Image.fromarray(self.frame))
-            self.video_label.config(image=self.photo)
-        elif self.recording:
+        if not self.recording:
+            ret, frame = self.video_capture.read()
+            if ret:
+                # Flip the frame horizontally
+                frame = cv2.flip(frame, 1)
+                self.frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                self.photo = ImageTk.PhotoImage(image=Image.fromarray(self.frame))
+                self.video_label.config(image=self.photo)
+        else:
             self.frame, pose = self.detector.update()
             if self.photo is not None:
                 self.photo = ImageTk.PhotoImage(image=Image.fromarray(self.frame))
@@ -75,7 +76,7 @@ class VideoRecorderApp:
                     if pose == self.current_exercise:
                         self.increase_counter()
 
-        self.root.after(10, self.update_video)
+        self.root.after(1, self.update_video)
 
     def start_recording(self):
         self.recording = True

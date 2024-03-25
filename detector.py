@@ -43,6 +43,9 @@ class detector:
                         push_compare2 = (landmarks[29].y / landmarks[11].y)
                         if ((push_compare1 / push_compare2) >= 0.99) & ((push_compare1 / push_compare2) <= 1.01):
                             resultPose = "Pushups"
+                            cv2.putText(self.image, "HELLO WORLD", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+
+
 
                     # if landmarks[11].y == landmarks[30].y and landmarks[12].y == landmarks[29].y:
                     #     cv2.putText(image, "HELLO WORLD", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
