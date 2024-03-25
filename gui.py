@@ -4,6 +4,7 @@ import cv2
 from PIL import Image, ImageTk
 import threading
 import detector
+import pygame
 
 class VideoRecorderApp:
     def __init__(self, root):
@@ -85,6 +86,14 @@ class VideoRecorderApp:
         self.update_video()
     def toggle_music(self):
         self.music_enabled = not self.music_enabled
+        if self.music_enabled:
+            pygame.mixer.init()
+            pygame.mixer.load('audio.wav')
+            pygame.mixer.music.set_endevent(pygame.constants.USEREVENT) # Comment!
+            pygame.mixer.music.play(loops=-1) # plays music indefinitely
+        else:
+            pygame.mixer.music.stop()
+
     def update_video(self):
         if not self.recording:
             ret, frame = self.video_capture.read()
