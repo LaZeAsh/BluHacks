@@ -53,7 +53,7 @@ class VideoRecorderApp:
         self.current_exercise = None
         self.counter = 0
 
-        self.detector = detector(self.video_capture, "None")
+        self.detector = detector.detector(self.video_capture, "None")
 
         # Update video display
         self.update_video()
@@ -66,7 +66,7 @@ class VideoRecorderApp:
             self.frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             self.photo = ImageTk.PhotoImage(image=Image.fromarray(self.frame))
             self.video_label.config(image=self.photo)
-        elif not self.recording:
+        elif self.recording:
             self.frame, pose = self.detector.update()
             if self.photo is not None:
                 self.photo = ImageTk.PhotoImage(image=Image.fromarray(self.frame))
@@ -81,15 +81,11 @@ class VideoRecorderApp:
         self.recording = True
         self.start_button.config(state=tk.DISABLED)
         self.stop_button.config(state=tk.NORMAL)
-        self.recording_thread = threading.Thread(target=self.record_video)
-        self.recording_thread.start()
 
     def stop_recording(self):
         self.recording = False
         self.start_button.config(state=tk.NORMAL)
         self.stop_button.config(state=tk.DISABLED)
-        self.recording_thread.join()
-        self.out.release()
 
     def switch_exercise(self, exercise):
         self.current_exercise = exercise
