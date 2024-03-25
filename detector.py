@@ -36,14 +36,25 @@ class detector:
                 landmarks = results.pose_landmarks.landmark
                 font = cv2.FONT_HERSHEY_COMPLEX
                 if landmarks:
-
+                    if self.type == "Pushups":
                     # Pushup detection done
-                    if ((landmarks[11].visibility < 0.01) or (landmarks[30].visibility < 0.01)) == False:
-                        push_compare1 = (landmarks[30].y / landmarks[12].y)
-                        push_compare2 = (landmarks[29].y / landmarks[11].y)
-                        if ((push_compare1 / push_compare2) >= 0.99) & ((push_compare1 / push_compare2) <= 1.01):
-                            resultPose = "Pushups"
-                            cv2.putText(self.image, "HELLO WORLD", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                        if ((landmarks[11].visibility < 0.01) or (landmarks[30].visibility < 0.01)) == False:
+                            push_compare1 = (landmarks[30].y / landmarks[12].y)
+                            push_compare2 = (landmarks[29].y / landmarks[11].y)
+                            if ((push_compare1 / push_compare2) >= 0.99) & ((push_compare1 / push_compare2) <= 1.01):
+                                resultPose = "Pushups"
+                                cv2.putText(self.image, "HELLO WORLD", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                    if self.type == "Squats":
+                        if ((landmarks[24].visibility < 0.1) or (landmarks[23].visibility < 0.1) or (landmarks[26].visibility < 0.1) or (landmarks[25].visibility < 0.1)) == False:
+                            sit_compare1 = (landmarks[23].y / landmarks[25].y)
+                            sit_compare2 = (landmarks[24].y / landmarks[26].y)
+                            if ((sit_compare1/sit_compare2 >= 0.99)) & ((sit_compare1 / sit_compare2) <= 1.01):
+                                resultPose = "Squats"
+                                cv2.putText(self.image, "Sit-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                    
+                    if self.type == "Situps":
+                        cv2.putText(self.image, "Work in progress :)", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+
 
 
 
