@@ -88,7 +88,7 @@ class VideoRecorderApp:
         self.music_enabled = not self.music_enabled
         if self.music_enabled:
             pygame.mixer.init()
-            pygame.mixer.load('music.mp3')
+            pygame.mixer.music.load('music.mp3')
             pygame.mixer.music.set_endevent(pygame.constants.USEREVENT) # Comment!
             pygame.mixer.music.play(loops=-1) # plays music indefinitely
         else:
