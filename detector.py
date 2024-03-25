@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+import time
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -38,12 +39,15 @@ class detector:
                 if landmarks:
                     if self.type == "Pushups":
                     # Pushup detection done
-                        if ((landmarks[11].visibility < 0.01) or (landmarks[30].visibility < 0.01)) == False:
-                            push_compare1 = (landmarks[30].y / landmarks[12].y)
-                            push_compare2 = (landmarks[29].y / landmarks[11].y)
-                            if ((push_compare1 / push_compare2) >= 0.99) & ((push_compare1 / push_compare2) <= 1.01):
+                            if landmarks[12].visibility > landmarks[11].visibility:
+                                mark = [12, 30]
+                            else:
+                                mark = [11, 29]
+                            comparison = (landmarks[mark[0]].y / landmarks[mark[1]].y)
+                            if (comparison >= 0.99) & (comparison <= 1.01):
                                 resultPose = "Pushups"
-                                cv2.putText(self.image, "Pushup", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                                cv2.putText(self.image, "Push-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                                time.sleep(2)
                     if self.type == "Squats":
                         if ((landmarks[24].visibility < 0.1) or (landmarks[23].visibility < 0.1) or (landmarks[26].visibility < 0.1) or (landmarks[25].visibility < 0.1)) == False:
                             sit_compare1 = (landmarks[23].y / landmarks[25].y)
