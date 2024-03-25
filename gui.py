@@ -11,17 +11,29 @@ class VideoRecorderApp:
         self.root.title("Video Recorder App")
         self.root.geometry("800x700")
         self.root.configure(bg="#191414")  # Set background color to Spotify's dark theme
+        self.total_pushups = 0
+        self.total_squats = 0
+        self.total_situps = 0
 
         # Create a frame for buttons on the left side
         self.button_frame = ttk.Frame(self.root, style="My.TFrame", padding=(10, 0))
         self.button_frame.pack(side=tk.LEFT, padx=10, pady=10)
 
+        self.pushup_counter_label = tk.Label(self.button_frame, text="Total Pushups: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        self.pushup_counter_label.pack(side=tk.TOP)
+
         # Add buttons for exercises
         self.pushups_button = ttk.Button(self.button_frame, text="Pushups", command=lambda: self.switch_exercise("Pushups"))
         self.pushups_button.pack(fill=tk.X, padx=10, pady=(5, 2))
 
+        self.squats_counter_label = tk.Label(self.button_frame, text="Total Squats: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        self.squats_counter_label.pack(side=tk.TOP)
+
         self.squats_button = ttk.Button(self.button_frame, text="Squats", command=lambda: self.switch_exercise("Squats"))
         self.squats_button.pack(fill=tk.X, padx=10, pady=2)
+
+        self.situps_counter_label = tk.Label(self.button_frame, text="Total Situps: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        self.situps_counter_label.pack(side=tk.TOP)
 
         self.situps_button = ttk.Button(self.button_frame, text="Situps", command=lambda: self.switch_exercise("Situps"))
         self.situps_button.pack(fill=tk.X, padx=10, pady=(2, 5))
@@ -32,6 +44,8 @@ class VideoRecorderApp:
 
         self.counter_label = tk.Label(self.root, text="Count: 0", font=("Spotify", 16), bg="#191414", fg="white")
         self.counter_label.pack()
+
+        
 
         # Create a label for video display
         self.video_label = tk.Label(self.root, bg="#191414")
@@ -74,6 +88,7 @@ class VideoRecorderApp:
                 self.video_label.config(image=self.photo)
                 if pose is not None:
                     if pose == self.current_exercise:
+                        self.increase_exercise(pose)
                         self.increase_counter()
 
         self.root.after(1, self.update_video)
@@ -93,13 +108,28 @@ class VideoRecorderApp:
         self.exercise_label.config(text=f"Exercise: {exercise}")
         self.counter = 0
         self.detector.change_type(exercise)
-        self.update_counter()
+        self.update_counters()
+    def increase_exercise(self, pose):
+        match pose:
+            case "Pushups":
+                self.total_pushups += 1
+            case "Squats":
+                self.total_squats += 1
+            case "Situps":
+                self.total_situps += 1
+       
+        self.update_counters()
 
-    def update_counter(self):
+            
+    def update_counters(self):
         self.counter_label.config(text=f"Count: {self.counter}")
+        self.pushup_counter_label.config(text=f"Total Pushups: {self.total_pushups}")
+        self.squats_counter_label.config(text=f"Total Squats: {self.total_squats}")
+        self.situps_counter_label.config(text=f"Total Situps: {self.total_situps}")
+
     def increase_counter(self):
         self.counter += 1
-        self.update_counter()
+        self.update_counters()
 
 # Define custom style for rounded buttons
 root = tk.Tk()
