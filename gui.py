@@ -9,17 +9,22 @@ class VideoRecorderApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Video Recorder App")
-        self.root.geometry("800x700")
+        self.root.geometry("800x800")
         self.root.configure(bg="#191414")  # Set background color to Spotify's dark theme
         self.total_pushups = 0
         self.total_squats = 0
         self.total_situps = 0
+        self.money = 0
+        self.music_enabled = False
+        self.toggle_music()
 
         # Create a frame for buttons on the left side
         self.button_frame = ttk.Frame(self.root, style="My.TFrame", padding=(10, 0))
         self.button_frame.pack(side=tk.LEFT, padx=10, pady=10)
 
-        self.pushup_counter_label = tk.Label(self.button_frame, text="Total Pushups: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        
+
+        self.pushup_counter_label = tk.Label(self.button_frame, text="Total Pushups: 0", bg="#191414", fg="white")
         self.pushup_counter_label.pack(side=tk.TOP)
 
         # Add buttons for exercises
@@ -45,6 +50,9 @@ class VideoRecorderApp:
         self.counter_label = tk.Label(self.root, text="Count: 0", font=("Spotify", 16), bg="#191414", fg="white")
         self.counter_label.pack()
 
+        self.money_counter_label = tk.Label(self.root, text="Money $DUCK: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        self.money_counter_label.pack()
+
         
 
         # Create a label for video display
@@ -57,6 +65,10 @@ class VideoRecorderApp:
 
         self.stop_button = ttk.Button(self.root, text="Stop Recording", command=self.stop_recording, state=tk.DISABLED, style="MyStop.TButton")
         self.stop_button.pack()
+
+        #create button for music
+        self.music_button = ttk.Button(self.root, text="Toggle Music", command=self.toggle_music)
+        self.music_button.pack(side=tk.LEFT)
 
         # Initialize video capture and recording variables
         self.video_capture = cv2.VideoCapture(0)
@@ -71,7 +83,8 @@ class VideoRecorderApp:
 
         # Update video display
         self.update_video()
-
+    def toggle_music(self):
+        self.music_enabled = not self.music_enabled
     def update_video(self):
         if not self.recording:
             ret, frame = self.video_capture.read()
@@ -126,9 +139,11 @@ class VideoRecorderApp:
         self.pushup_counter_label.config(text=f"Total Pushups: {self.total_pushups}")
         self.squats_counter_label.config(text=f"Total Squats: {self.total_squats}")
         self.situps_counter_label.config(text=f"Total Situps: {self.total_situps}")
+        self.money_counter_label.config(text=f"Money $DUCK: {self.money}")
 
     def increase_counter(self):
         self.counter += 1
+        self.money += 1
         self.update_counters()
 
 # Define custom style for rounded buttons
