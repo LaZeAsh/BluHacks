@@ -6,6 +6,7 @@ import time
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_pose = mp.solutions.pose
+pause = False
 
 class detector:
     def __init__(self, cap, type):
@@ -39,23 +40,34 @@ class detector:
                 if landmarks:
                     if self.type == "Pushups":
                     # Pushup detection done
-                            mark = []
-                            if landmarks[12].visibility > landmarks[11].visibility:
-                                mark = [12, 30]
-                            else:
-                                mark = [11, 29]
-                            comparison = (landmarks[mark[0]].y / landmarks[mark[1]].y)
-                            if (comparison >= 0.99) & (comparison <= 1.01):
-                                resultPose = "Pushups"
-                                cv2.putText(self.image, "Push-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
-                                time.sleep(2)
+                        mark = []
+                        if landmarks[12].visibility > landmarks[11].visibility:
+                            mark = [12, 30]
+                        else:
+                            mark = [11, 29]
+                        comparison = (landmarks[mark[0]].y / landmarks[mark[1]].y)
+                        if (comparison >= 0.99) & (comparison <= 1.01):
+                            resultPose = "Pushups"
+                            cv2.putText(self.image, "Push-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                            time.sleep(2)
                     if self.type == "Squats":
-                        if ((landmarks[24].visibility < 0.1) or (landmarks[23].visibility < 0.1) or (landmarks[26].visibility < 0.1) or (landmarks[25].visibility < 0.1)) == False:
-                            sit_compare1 = (landmarks[23].y / landmarks[25].y)
-                            sit_compare2 = (landmarks[24].y / landmarks[26].y)
-                            if ((sit_compare1/sit_compare2 >= 0.99)) & ((sit_compare1 / sit_compare2) <= 1.01):
-                                resultPose = "Squats"
-                                cv2.putText(self.image, "Sit-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                        # if ((landmarks[24].visibility < 0.1) or (landmarks[23].visibility < 0.1) or (landmarks[26].visibility < 0.1) or (landmarks[25].visibility < 0.1)) == False:
+                        #     sit_compare1 = (landmarks[23].y / landmarks[25].y)
+                        #     sit_compare2 = (landmarks[24].y / landmarks[26].y)
+                        #     if ((sit_compare1/sit_compare2 >= 0.99)) & ((sit_compare1 / sit_compare2) <= 1.01):
+                        #         resultPose = "Squats"
+                        #         cv2.putText(self.image, "Sit-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                        mark = []
+                        if landmarks[24].visibility > landmarks[23].visibility:
+                            mark = [24, 26]
+                        else:
+                            mark = [23,25]
+                        comparison = (landmarks[mark[0]].y / landmarks[mark[1]].y)
+                        if (comparison >= 0.99) & (comparison <= 1.01):
+                            resultPose = "Squats"
+                            cv2.putText(self.image, "Push-up", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
+                            time.sleep(2)
+
                     
                     if self.type == "Situps":
                         cv2.putText(self.image, "Work in progress :)", (400, 600), font, 3, (0, 255, 0), 12, cv2.LINE_AA)
