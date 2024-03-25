@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 import threading
 import detector
 import pygame
+import time
 
 class VideoRecorderApp:
     def __init__(self, root):
@@ -17,6 +18,8 @@ class VideoRecorderApp:
         self.total_situps = 0
         self.money = 0
         self.music_enabled = False
+        self.inventory = []
+        self.shop_items = ["small trophy", "5", "decent size trophy", "20", "biggg trophy", "50", "biggest.", "100"]
         self.toggle_music()
 
         # Create a frame for buttons on the left side
@@ -70,6 +73,9 @@ class VideoRecorderApp:
         #create button for music
         self.music_button = ttk.Button(self.root, text="Toggle Music", command=self.toggle_music)
         self.music_button.pack(side=tk.LEFT)
+
+        self.shop_button = ttk.Button(self.root, text="Shop", command=self.shop)
+        self.shop_button.pack(side=tk.LEFT)
 
         # Initialize video capture and recording variables
         self.video_capture = cv2.VideoCapture(0)
@@ -154,6 +160,65 @@ class VideoRecorderApp:
         self.counter += 1
         self.money += 1
         self.update_counters()
+
+    
+    
+    def shop(self):
+        root = tk.Tk()
+        root.title("Shop")
+        style = ttk.Style(root)
+        style.theme_use("clam")
+        shop_label = tk.Label(root, text="Shop")
+        inventory_label = tk.Label(root, text="Inventory")
+
+        # Create text widgets for displaying text in columns
+        shop_text = tk.Label(root, height=10, width=30)
+ 
+        inventory_text = tk.Label(root, height=10, width=30)
+
+
+        # Create a single text entry widget
+        entry_field = tk.Entry(root, width=30)
+
+        # Arrange labels, text widgets, and entry widgets in the grid
+        shop_label.grid(row=0, column=0, padx=10, pady=5)
+        inventory_label.grid(row=0, column=1, padx=10, pady=5)
+        shop_text.grid(row=1, column=0, padx=10, pady=5)
+        inventory_text.grid(row=1, column=1, padx=10, pady=5)
+        entry_field.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
+
+        ntext = ""
+        for i in self.inventory:
+            ntext +=   i + "\n"
+        inventory_text.config(text=ntext)
+        ntext = ""
+        for i in range(len(self.shop_items)):
+            if i % 2 == 0:
+                ntext += str(int(i/2)) + ". " + self.shop_items[i] + " "
+            else:
+                ntext += self.shop_items[i] + ": $DUCK\n"
+        shop_text.config(text= ntext)
+
+        # Create a modal dialog to wait for input
+        def get_input():
+            # After input received
+            input_text = entry_field.get()
+            item = int(input_text) * 2
+            if(self.money >= self.shop_items[item + 1]):
+                self.money -= self.shop_items[item + 1]
+                self.inventory.append(self.shop_items[item])
+            self.update_counters()
+            ntext = ""
+            for i in self.inventory:
+                ntext +=   i + "\n"
+            inventory_text.config(text=ntext)
+            time.sleep(3)
+        entry_field.bind("<Return>", get_input)
+
+
+        
+        root.destroy()
+        
 
 # Define custom style for rounded buttons
 root = tk.Tk()
