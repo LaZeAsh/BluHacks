@@ -24,3 +24,35 @@ def transform_landmarks(landmarks, transformation_matrix):
 def compute_centroid(landmarks):
     """Compute the centroid of a set of landmarks."""
     pass
+
+def scale_landmarks(landmarks, scale_factor):
+    """Scale the landmarks by a given factor."""
+    pass
+
+def rotate_landmarks(landmarks, angle, axis):
+    """Rotate the landmarks around a given axis by a specified angle."""
+    pass
+
+def translate_landmarks(landmarks, translation_vector):
+    """Translate the landmarks by a given vector."""
+    pass
+
+def compute_bounding_box(landmarks):
+    """Compute the bounding box of a set of landmarks."""
+    pass
+
+def find_nearest_landmark(landmarks, point):
+    """Find the landmark nearest to a given point."""
+    pass
+
+def compute_landmark_variance(landmarks):
+    """Compute the variance of the landmarks' positions."""
+    pass
+
+def smooth_landmarks(landmarks, smoothing_factor):
+    """Smooth the landmarks using a specified smoothing factor."""
+    pass
+
+def compute_landmark_histogram(landmarks, bins):
+    """Compute a histogram of the landmarks' positions."""
+    pass
