@@ -281,3 +281,9 @@ M	main.py
 D	music.mp3
 D	pose_landmarker_full.task
 M	requirements.txt
+
+## 2026-04-26T17:47:06.910186+00:00
+
+Resolved PR #11: Pin stable ML dependencies
+
+Resolution memory: `pr-resolutions/pr-11.md`
