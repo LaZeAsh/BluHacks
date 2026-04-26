@@ -8,9 +8,9 @@ import threading
 class VideoRecorderApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Video Recorder App")
-        self.root.geometry("800x700")
-        self.root.configure(bg="#191414")
+        self.root.title("BluHacks Training Dashboard")
+        self.root.geometry("960x760")
+        self.root.configure(bg="#0F172A")
 
         self.button_frame = ttk.Frame(self.root, style="My.TFrame", padding=(10, 0))
         self.button_frame.pack(side=tk.LEFT, padx=10, pady=10)
@@ -33,22 +33,22 @@ class VideoRecorderApp:
         self.exercise_label = tk.Label(
             self.root,
             text="Exercise: None",
-            font=("Spotify", 20),
-            bg="#191414",
-            fg="#1DB954",
+            font=("Helvetica", 24, "bold"),
+            bg="#0F172A",
+            fg="#38BDF8",
         )
         self.exercise_label.pack(pady=(30, 10))
 
         self.counter_label = tk.Label(
             self.root,
-            text="Count: 0",
-            font=("Spotify", 16),
-            bg="#191414",
-            fg="white",
+            text="Reps completed: 0",
+            font=("Helvetica", 18),
+            bg="#0F172A",
+            fg="#E2E8F0",
         )
         self.counter_label.pack()
 
-        self.video_label = tk.Label(self.root, bg="#191414")
+        self.video_label = tk.Label(self.root, bg="#0F172A")
         self.video_label.pack()
 
         self.start_button = ttk.Button(
@@ -121,11 +121,11 @@ class VideoRecorderApp:
         self.update_counter()
 
     def update_counter(self):
-        self.counter_label.config(text=f"Count: {self.counter}")
+        self.counter_label.config(text=f"Reps completed: {self.counter}")
 
 
 root = tk.Tk()
-root.title("Video Recorder App")
+root.title("BluHacks Training Dashboard")
 
 style = ttk.Style(root)
 style.theme_use("clam")
