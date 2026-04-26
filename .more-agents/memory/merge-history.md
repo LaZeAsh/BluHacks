@@ -37,3 +37,9 @@ M	main.py
 D	music.mp3
 D	pose_landmarker_full.task
 M	requirements.txt
+
+## 2026-04-26T13:00:07.328157+00:00
+
+Resolved PR #3: Expand recorder dashboard UI
+
+Resolution memory: `pr-resolutions/pr-3.md`
