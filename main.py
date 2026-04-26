@@ -30,8 +30,8 @@ if __name__ == '__main__':
             if results.pose_landmarks is not None:
                 landmarks = results.pose_landmarks.landmark
                 font = cv2.FONT_HERSHEY_COMPLEX
-                mode = "pushup"
-                overlay_color = (0, 255, 0)
+                mode = "squat"
+                overlay_color = (255, 191, 0)
                 if landmarks:
 
                     # Pushup detection done
@@ -60,8 +60,8 @@ if __name__ == '__main__':
                         if ((landmarks[24].visibility < 0.1) or (landmarks[23].visibility < 0.1) or (landmarks[26].visibility < 0.1) or (landmarks[25].visibility < 0.1)) == False:
                             sit_compare1 = (landmarks[23].y / landmarks[25].y)
                             sit_compare2 = (landmarks[24].y / landmarks[26].y)
-                            if ((sit_compare1/sit_compare2 >= 0.99)) & ((sit_compare1 / sit_compare2) <= 1.01):
-                                cv2.putText(image, "Sit-up", (400, 600), font, 3, overlay_color, 12, cv2.LINE_AA)
+                            if ((sit_compare1/sit_compare2 >= 0.96)) & ((sit_compare1 / sit_compare2) <= 1.04):
+                                cv2.putText(image, "Squat rep detected", (250, 600), font, 2, overlay_color, 8, cv2.LINE_AA)
                                 time.sleep(2)
                             
             # Draw the pose annotation on the image.
