@@ -95,3 +95,9 @@ M	main.py
 D	music.mp3
 D	pose_landmarker_full.task
 M	requirements.txt
+
+## 2026-04-26T17:03:35.004577+00:00
+
+Resolved PR #5: Use 2D landmark distance
+
+Resolution memory: `pr-resolutions/pr-5.md`
