@@ -223,3 +223,61 @@ M	requirements.txt
 Resolved PR #9: Switch overlay toward squat tracking
 
 Resolution memory: `pr-resolutions/pr-9.md`
+
+## 2026-04-26T17:45:17.145798+00:00
+
+PR analysis for #11.
+
+PR #11: Pin stable ML dependencies
+
+No PR description was provided.
+
+Changed files:
+
+- README.md
+- requirements.txt
+
+Diff context:
+
+## Diff stat
+.more-agents/memory/agent-ledger.md        |   1 -
+ .more-agents/memory/architecture.md        |  51 -------
+ .more-agents/memory/decisions.md           |   1 -
+ .more-agents/memory/goal.md                |   3 -
+ .more-agents/memory/merge-history.md       | 225 -----------------------------
+ .more-agents/memory/pr-resolutions/pr-3.md |  22 ---
+ .more-agents/memory/pr-resolutions/pr-5.md |  22 ---
+ .more-agents/memory/pr-resolutions/pr-7.md |  22 ---
+ .more-agents/memory/pr-resolutions/pr-9.md |  22 ---
+ .more-agents/memory/run-status.md          |   1 -
+ README.md                                  |  10 +-
+ codefusion.config                          |   4 -
+ detector.py                                |  92 ------------
+ gui.py                                     |  94 ++++--------
+ helper.py                                  |  58 +-------
+ main.py                                    |  11 +-
+ music.mp3                                  | Bin 5877549 -> 0 bytes
+ pose_landmarker_full.task                  | Bin 9398198 -> 0 bytes
+ requirements.txt                           | Bin 946 -> 600 bytes
+ 19 files changed, 39 insertions(+), 600 deletions(-)
+
+## Name status
+D	.more-agents/memory/agent-ledger.md
+D	.more-agents/memory/architecture.md
+D	.more-agents/memory/decisions.md
+D	.more-agents/memory/goal.md
+D	.more-agents/memory/merge-history.md
+D	.more-agents/memory/pr-resolutions/pr-3.md
+D	.more-agents/memory/pr-resolutions/pr-5.md
+D	.more-agents/memory/pr-resolutions/pr-7.md
+D	.more-agents/memory/pr-resolutions/pr-9.md
+D	.more-agents/memory/run-status.md
+M	README.md
+D	codefusion.config
+D	detector.py
+M	gui.py
+M	helper.py
+M	main.py
+D	music.mp3
+D	pose_landmarker_full.task
+M	requirements.txt
