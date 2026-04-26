@@ -161,3 +161,65 @@ M	requirements.txt
 Resolved PR #7: Normalize 3D landmark distance
 
 Resolution memory: `pr-resolutions/pr-7.md`
+
+## 2026-04-26T17:26:31.632114+00:00
+
+PR analysis for #9.
+
+PR #9: Switch overlay toward squat tracking
+
+No PR description was provided.
+
+Changed files:
+
+- README.md
+- main.py
+
+Diff context:
+
+## Diff stat
+.more-agents/memory/agent-ledger.md        |   1 -
+ .more-agents/memory/architecture.md        |  37 -------
+ .more-agents/memory/decisions.md           |   1 -
+ .more-agents/memory/goal.md                |   3 -
+ .more-agents/memory/merge-history.md       | 163 -----------------------------
+ .more-agents/memory/pr-resolutions/pr-3.md |  22 ----
+ .more-agents/memory/pr-resolutions/pr-5.md |  22 ----
+ .more-agents/memory/pr-resolutions/pr-7.md |  22 ----
+ .more-agents/memory/run-status.md          |   1 -
+ README.md                                  |  10 +-
+ codefusion.config                          |   4 -
+ detector.py                                |  92 ----------------
+ gui.py                                     |  94 ++++++-----------
+ helper.py                                  |  58 +---------
+ main.py                                    |  10 +-
+ music.mp3                                  | Bin 5877549 -> 0 bytes
+ pose_landmarker_full.task                  | Bin 9398198 -> 0 bytes
+ requirements.txt                           | Bin 946 -> 601 bytes
+ 18 files changed, 39 insertions(+), 501 deletions(-)
+
+## Name status
+D	.more-agents/memory/agent-ledger.md
+D	.more-agents/memory/architecture.md
+D	.more-agents/memory/decisions.md
+D	.more-agents/memory/goal.md
+D	.more-agents/memory/merge-history.md
+D	.more-agents/memory/pr-resolutions/pr-3.md
+D	.more-agents/memory/pr-resolutions/pr-5.md
+D	.more-agents/memory/pr-resolutions/pr-7.md
+D	.more-agents/memory/run-status.md
+M	README.md
+D	codefusion.config
+D	detector.py
+M	gui.py
+M	helper.py
+M	main.py
+D	music.mp3
+D	pose_landmarker_full.task
+M	requirements.txt
+
+## 2026-04-26T17:27:33.579040+00:00
+
+Resolved PR #9: Switch overlay toward squat tracking
+
+Resolution memory: `pr-resolutions/pr-9.md`
