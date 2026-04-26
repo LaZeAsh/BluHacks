@@ -101,3 +101,57 @@ M	requirements.txt
 Resolved PR #5: Use 2D landmark distance
 
 Resolution memory: `pr-resolutions/pr-5.md`
+
+## 2026-04-26T17:19:32.052329+00:00
+
+PR analysis for #7.
+
+PR #7: Normalize 3D landmark distance
+
+No PR description was provided.
+
+Changed files:
+
+- README.md
+- helper.py
+
+Diff context:
+
+## Diff stat
+.more-agents/memory/agent-ledger.md        |   1 -
+ .more-agents/memory/architecture.md        |  23 -------
+ .more-agents/memory/decisions.md           |   1 -
+ .more-agents/memory/goal.md                |   3 -
+ .more-agents/memory/merge-history.md       | 103 -----------------------------
+ .more-agents/memory/pr-resolutions/pr-3.md |  22 ------
+ .more-agents/memory/pr-resolutions/pr-5.md |  22 ------
+ .more-agents/memory/run-status.md          |   1 -
+ README.md                                  |  10 +--
+ codefusion.config                          |   4 --
+ detector.py                                |  92 --------------------------
+ gui.py                                     |  94 +++++++++-----------------
+ helper.py                                  |  59 +----------------
+ main.py                                    |   7 +-
+ music.mp3                                  | Bin 5877549 -> 0 bytes
+ pose_landmarker_full.task                  | Bin 9398198 -> 0 bytes
+ requirements.txt                           | Bin 946 -> 601 bytes
+ 17 files changed, 39 insertions(+), 403 deletions(-)
+
+## Name status
+D	.more-agents/memory/agent-ledger.md
+D	.more-agents/memory/architecture.md
+D	.more-agents/memory/decisions.md
+D	.more-agents/memory/goal.md
+D	.more-agents/memory/merge-history.md
+D	.more-agents/memory/pr-resolutions/pr-3.md
+D	.more-agents/memory/pr-resolutions/pr-5.md
+D	.more-agents/memory/run-status.md
+M	README.md
+D	codefusion.config
+D	detector.py
+M	gui.py
+M	helper.py
+M	main.py
+D	music.mp3
+D	pose_landmarker_full.task
+M	requirements.txt

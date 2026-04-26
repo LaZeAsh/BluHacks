@@ -5,4 +5,4 @@ Run `python main.py` and keep the camera centered on your shoulders and ankles.
 
 The dashboard GUI gives coaches a larger recording view and clearer rep text.
 
-Distance helpers use 2D screen coordinates for camera-friendly rep checks.
+Distance helpers keep normalized 3D coordinates for smoother pose scoring.
