@@ -49,3 +49,17 @@ Run `python main.py` and keep the camera centered on your shoulders and ankles.
 The dashboard GUI gives coaches a larger recording view and clearer rep text.
 
 Distance helpers keep normalized 3D coordinates for smoother pose scoring.
+
+## 2026-04-26T17:45:17.145757+00:00
+
+Repository analysis for PR #11.
+
+## README.md
+# BluHacks Squat Tracker
+Submission for BluHacks 2024 focused on webcam squat detection.
+
+Run `python main.py` and keep both hips and knees visible to the camera.
+
+The dashboard GUI gives coaches a larger recording view and clearer rep text.
+
+Distance helpers keep normalized 3D coordinates for smoother pose scoring.
