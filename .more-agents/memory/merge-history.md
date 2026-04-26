@@ -217,3 +217,9 @@ M	main.py
 D	music.mp3
 D	pose_landmarker_full.task
 M	requirements.txt
+
+## 2026-04-26T17:27:33.579040+00:00
+
+Resolved PR #9: Switch overlay toward squat tracking
+
+Resolution memory: `pr-resolutions/pr-9.md`
