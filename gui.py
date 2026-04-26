@@ -7,9 +7,9 @@ import threading
 class VideoRecorderApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Video Recorder App")
-        self.root.geometry("800x700")
-        self.root.configure(bg="#191414")  # Set background color to Spotify's dark theme
+        self.root.title("Rep Coach")
+        self.root.geometry("720x560")
+        self.root.configure(bg="#101820")
 
         # Create a frame for buttons on the left side
         self.button_frame = ttk.Frame(self.root, style="My.TFrame", padding=(10, 0))
@@ -26,10 +26,10 @@ class VideoRecorderApp:
         self.situps_button.pack(fill=tk.X, padx=10, pady=(2, 5))
 
         # Header and counter for exercise tracking
-        self.exercise_label = tk.Label(self.root, text="Exercise: None", font=("Spotify", 20), bg="#191414", fg="#1DB954")
+        self.exercise_label = tk.Label(self.root, text="Exercise: None", font=("Arial", 18), bg="#101820", fg="#FEE715")
         self.exercise_label.pack(pady=(30, 10))
 
-        self.counter_label = tk.Label(self.root, text="Count: 0", font=("Spotify", 16), bg="#191414", fg="white")
+        self.counter_label = tk.Label(self.root, text="Count: 0", font=("Arial", 14), bg="#101820", fg="white")
         self.counter_label.pack()
 
         # Create a label for video display
@@ -104,7 +104,7 @@ class VideoRecorderApp:
 
 # Define custom style for rounded buttons
 root = tk.Tk()
-root.title("Video Recorder App")
+root.title("Rep Coach")
 
 style = ttk.Style(root)
 style.theme_use("clam")
